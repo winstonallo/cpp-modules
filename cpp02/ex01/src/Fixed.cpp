@@ -33,21 +33,26 @@ Fixed::Fixed(float n){
     this->fixedPointValue = roundf(n * (1 << this->fractionalBits));
 }
 
+// this converts the fixed point value to a float: the fractional part is divided by 2^fractionalBits (2^8 == 256)
+// to get the decimal value of the fractional part
 float Fixed::toFloat()const{
     return (float)this->fixedPointValue / (1 << this->fractionalBits);
 }
 
+// this converts the fixed point value to an int by shifting the bits to the right
 int Fixed::toInt()const{
     return this->fixedPointValue >> this->fractionalBits;
 }
 
-Fixed & Fixed::operator=(const Fixed &rhs){
+Fixed & Fixed::operator = (const Fixed & rhs){
     std::cout << "Copy assignment operator called" << std::endl;
     setRawBits(rhs.getRawBits());
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &o, Fixed const &rhs){
-    o << rhs.toFloat();
+/* this overloads the std::ostream operator, providing a way to call std::cout directly
+on a Fixed object */
+std::ostream & operator << (std::ostream &o, Fixed const & object){
+    o << object.toFloat();
     return o;
 }
