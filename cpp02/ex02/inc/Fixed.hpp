@@ -2,6 +2,7 @@
 #define FIXED_HPP
 
 #include <iostream>
+#include <cmath>
 
 class Fixed{
     public:
@@ -9,9 +10,12 @@ class Fixed{
         Fixed(const Fixed & fixed);
         Fixed(const int intValue);
         Fixed(const float floatValue);
-        Fixed & operator=(const Fixed & fixed);
-        Fixed & operator-(const Fixed & fixed);
-        Fixed operator+(const Fixed & fixed);
+        Fixed & operator=(const Fixed &fixed);
+        Fixed operator - (const Fixed &fixed) const;
+        Fixed operator + (const Fixed &fixed) const;
+		Fixed operator * (const Fixed &fixed) const;
+		Fixed operator / (const Fixed &fixed) const;
+		Fixed & operator--();
         Fixed & operator++();
         ~Fixed();
 
@@ -30,5 +34,7 @@ class Fixed{
         int fixedPointValue;
         static const int fractionalBits = 8;
 };
+
+std::ostream & operator<<(std::ostream & o, Fixed const & fixed);
 
 #endif
