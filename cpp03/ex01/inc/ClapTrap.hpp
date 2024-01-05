@@ -25,7 +25,7 @@ class ClapTrap{
 		virtual std::string getName() const;
 		virtual unsigned int getHitPoints() const;
 		virtual unsigned int getEnergyPoints() const;
-		virtual unsigned int getAttackDamage() const;	
+		virtual unsigned int getAttackDamage() const;
 };
 
 std::ostream &operator << (std::ostream &out, const ClapTrap &clapTrap);
