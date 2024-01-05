@@ -34,7 +34,15 @@ void ScavTrap::attack(const std::string &target){
 
 void ScavTrap::takeDamage(unsigned int amount){
 	std::cout << "ScavTrap " << this->name << " takes " << amount << " points of damage!" << std::endl;
-	this->hitPoints -= amount;
+	while (amount > 0){
+		if (this->hitPoints == 0){
+			std::cout << "ScavTrap " << this->name << " has no hit points left!" << std::endl;
+			std::cout << "Overkill damage: " << amount << std::endl;
+			return ;
+		}
+		this->hitPoints--;
+		amount--;
+	}
 	std::cout << "ScavTrap " << this->name << " has " << this->hitPoints << " hit points left!" << std::endl;
 }
 
@@ -46,6 +54,11 @@ void ScavTrap::beRepaired(unsigned int amount){
 	std::cout << "ScavTrap " << this->name << " is repaired for " << amount << " points of damage!" << std::endl;
 	this->hitPoints += amount;
 	std::cout << "ScavTrap " << this->name << " has " << this->hitPoints << " hit points left!" << std::endl;
+	std::cout << "ScavTrap " << this->name << " has " << this->energyPoints << " energy points left!" << std::endl;
+}
+
+unsigned int ScavTrap::getAttackDamage(){
+	return this->attackDamage;
 }
 
 void ScavTrap::guardGate(){
