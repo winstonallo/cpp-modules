@@ -39,6 +39,11 @@ void ClapTrap::attack(const std::string &target){
 }
 
 void ClapTrap::takeDamage(unsigned int amount){
+	if (this->hitPoints == 0){
+		std::cout << this->name << " has no hit points left!" << std::endl;
+		std::cout << "Overkill damage: " << amount << std::endl;
+		return ;
+	}
 	std::cout << this->name << " takes " << amount << " points of damage!" << std::endl;
 	while(amount > 0){
 		if (this->hitPoints == 0){
