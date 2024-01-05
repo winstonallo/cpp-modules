@@ -2,6 +2,7 @@
 
 #include "ClapTrap.hpp"
 #include <iostream>
+#include <ostream>
 
 class ScavTrap : public ClapTrap{
 	public:
@@ -9,15 +10,9 @@ class ScavTrap : public ClapTrap{
 		ScavTrap(std::string name);
 		ScavTrap(const ScavTrap &other);
 		~ScavTrap();
-		ScavTrap operator=(const ScavTrap other);
+		ScavTrap &operator=(const ScavTrap &other);
 		void attack(const std::string &target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
-		unsigned int getAttackDamage();
 		void guardGate();
-	// private:
-	// 	std::string	name;
-	// 	int			hitPoints;
-	// 	int			energyPoints;
-	// 	int			attackDamage;
 };
+
+std::ostream &operator << (std::ostream &out, const ScavTrap &scavTrap);
