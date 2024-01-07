@@ -3,7 +3,7 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-class FragTrap : virtual public ClapTrap{
+class FragTrap : public ClapTrap{
 	public:
 		FragTrap();
 		FragTrap(std::string name);
